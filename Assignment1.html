@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> flexbox exercise </title>
+        <title> Assignment 2 </title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/stylesheet.css"/>
     </head>
     <body>
     <div class="big-gridbox">
-        <header>
+        <header id="header">
             <h1>Take Better Notes</h1>
         </header>
         <div class="grid-attributes">
-            <main>
+            <main id="container"class="containerc">
 
                 <div class="buttons-top">
-                    <button id="button1">New Note</button>
-                    <button id="button2">Dark Theme</button>
+                    <button id="new-note-button" class="new-note-button-class">New Note</button>
+                    <button id="dark-theme-button" class="dark-button-class">Dark Theme</button>
                 </div>
                     
                 <div class="text-area">
-                    <textarea placeholder="This is a placeholder" rows="6" cols="40"></textarea>
+                    <textarea placeholder="This is a placeholder" rows="6" cols="40" id="text-area"></textarea>
                     <div class="buttons-bottom">
-                        <button id="button3">Save</button>
-                        <button id="button4">Cancel</button>
+                        <button id="save-button" class>Save</button>
+                        <button id="cancel-button" class="cancel-button-class">Cancel</button>
                     </div>
                 </div>
 
             </main>
-            <nav>
+            <nav id="nav"class = "navc">
                 <h2>My Notes</h2>
-                <ul>
+                <ul id="list">
                     <li>note one</li>
                     <li>note two</li>
                 </ul>
@@ -41,5 +41,6 @@
             <a href="https://en.wikipedia.org/wiki/Internet"><img src="images/InternetLogo.jpg" height="50" width="50"> </a>
         </footer>
     </div>
+    <script src="js/assign2.js"> </script>
     </body>
 </html>

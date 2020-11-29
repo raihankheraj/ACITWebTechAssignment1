@@ -1,4 +1,12 @@
 
+let counter = 2; //how many notes already in array
+
+var notesArray = [];
+var noteOne = {title: "note one", body: "some text 1"};
+var noteTwo = {title: "note two", body: "some text 2"};
+notesArray.push(noteOne);
+notesArray.push(noteTwo);
+
 // Event Listeners
 
 document.querySelector("#dark-theme-button").addEventListener("click", function () {
@@ -15,6 +23,13 @@ document.querySelector("#cancel-button").addEventListener("click", hideItems);
 document.querySelector("#new-note-button").addEventListener("click", newNote);
 
 document.querySelector("#save-button").addEventListener("click", saveNote);
+
+document.querySelector("#note1").addEventListener("click", function () { displayBody(this, notesArray);});
+document.querySelector("#note2").addEventListener("click", function () { displayBody(this, notesArray);});
+
+// document.querySelector("#save-button").addEventListener("click", saveNote);
+
+
 
 
 
@@ -37,6 +52,12 @@ function toggleDarkTheme () {
 
     document.getElementById("new-note-button").classList.add("dark-mode-engaged-button");
     document.getElementById("new-note-button").classList.remove("new-note-button-class");
+
+    document.getElementById("header").classList.add("dark-header");
+    document.getElementById("header").classList.remove("headerc");
+
+    document.getElementById("footer").classList.add("dark-footer");
+    document.getElementById("footer").classList.remove("footerc");
 
     document.getElementById("dark-theme-button").innerText = "Light Theme";
 
@@ -109,53 +130,67 @@ function newNote () {
 }
 
 
+
 function saveNote () {
     //Activated by Save button
     //This func takes the input and splits the first item and the rest into two pieces to be added to an array
     //which will add new notes to the Notes list on the left of the grid
+    //Returns the count of saved notes for other functions to use
 
-    var notesArray = [];
-    var noteOne = {title: "note one", body: "some text 1"};
-    var noteTwo = {title: "note two", body: "some text 2"};
-    notesArray.push(noteOne);
-    notesArray.push(noteTwo);
+    
+    
 
     if(document.getElementById("text-area").value != "") {
 
+        
         let firstSpaceIndex = document.getElementById("text-area").value.indexOf(" ");
+
+        //split input into title and body 
         let title = document.getElementById("text-area").value.slice(0, firstSpaceIndex);
         let body = document.getElementById("text-area").value.slice(firstSpaceIndex + 1);
+
+        //create object and append pieces to array
         var newNote = {title: title, body: body};
         notesArray.push(newNote);
-
         var ul = document.getElementById("list");
         var li = document.createElement("li");
+
+        //create list item with value of title from the user input
         li.appendChild(document.createTextNode(title));
+        counter ++;
+        li.setAttribute("id", ("note" + counter));
+
         ul.appendChild(li);
-
-        console.log(notesArray);
-
-
+        //adds event listener to new list items
+        document.querySelector("#note" + counter).addEventListener("click", function () { displayBody(this, notesArray);});
         
     }
+    return notesArray, counter;
 
 }
 
-// function createCourseArray() {
-//     var arrClassInfo = document.getElementsByClassName("left-area");
+function displayBody (event, notesArray) {
+    //Activated by clicking a list item on the left side of the grid
+    //This func will take the title clicked into account and display the matching body stored in the array
+    let arr = document.getElementById("list");
+    let titleText = event.innerText;
+    let arrLength = notesArray.length;
+    let notesBody;
+    
+    for (i = 0; i <= (arrLength - 1); i++) {
+        boolCheck = false;
+        let notesTitle = notesArray[i].title;
 
-//     var newArray = [];
-//     var courseLength = arrClassInfo.length;
-
-//     var date = document.querySelectorAll(".left-area p");
-//     var code = document.querySelectorAll(".left-area a");
-
-
-//     for (j = 0; j <= (courseLength - 1); j++) {
-//         var course = { code: code[j], date: date[j] };
-//         newArray.push(course);
+        if (notesTitle == titleText) {
+            notesBody = notesArray[i].body;
+            console.log(notesBody);
+        }else{
+            boolCheck = true;
+        }
+    document.getElementById("text-area").value = notesBody;
 
 
-//     }
-//     return newArray
-// }
+}
+}
+
+

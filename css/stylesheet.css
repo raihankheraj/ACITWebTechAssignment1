@@ -9,18 +9,31 @@ body{
     font-weight: 400;
     overflow-x: hidden;
 }
-header{
+.headerc{
     background-color: #B19893 ;
     text-align: center;
 }
+
+.dark-header{
+    background-color: #2C2E2C;
+    text-align: center;
+    color: white;
+}
+
 header > h1{
     margin-top: 20px;
 }
 
 
-footer{
-background-color: #F6AD9C ;
-text-align: center;
+.footerc{
+    background-color: #F6AD9C ;
+    text-align: center;
+}
+
+.dark-footer{
+    background-color: #2C2E2C;
+    text-align: center;
+    color: white;
 }
 textarea{
     padding: 10px;
@@ -89,16 +102,14 @@ button{
     padding: 5px;
 }
 
-#header{
-    background-color: #B19893 ;
-    text-align: center;
-}
+
 
 .navc{
     background-color: darkgrey;
 }
 .dark-nav{
     background-color: #2C2E2C;
+    color: white;
 }
 
 .new-note-button-class{

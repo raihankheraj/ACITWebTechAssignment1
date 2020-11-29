@@ -84,6 +84,12 @@ function toggleLightTheme () {
     document.getElementById("new-note-button").classList.add("new-note-button-class");
     document.getElementById("new-note-button").classList.remove("dark-mode-engaged-button");
 
+    document.getElementById("header").classList.add("headerc");
+    document.getElementById("header").classList.remove("dark-header");
+
+    document.getElementById("footer").classList.add("footerc");
+    document.getElementById("footer").classList.remove("dark-footer");
+
     document.getElementById("dark-theme-button").innerText = "Dark Theme";
     console.log("success");
 
